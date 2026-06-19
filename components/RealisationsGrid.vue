@@ -92,22 +92,20 @@ const spanClass = (s?: Realisation['span']) => {
             loading="lazy"
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <!-- Donkere ondergrond-gradient: sterk onderaan, fade naar top.
-               Geen opacity-reductie meer zodat de tekst altijd leesbaar is,
-               ook op lichte catalogus-foto's. -->
-          <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-transparent transition-opacity duration-500 group-hover:opacity-100" />
+          <!-- Sterk donkere gradient zodat de tekst altijd leesbaar is. -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent" />
 
-          <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-bone-50">
-            <div class="drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-              <p class="text-[10px] uppercase tracking-[0.25em] text-accent-200">
+          <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-[0.25em] text-white">
                 {{ item.category }}
               </p>
-              <h3 class="mt-1 font-display text-lg font-semibold leading-tight text-shadow-sm sm:text-xl">
+              <h3 class="mt-1 font-display text-lg font-bold leading-tight text-white sm:text-xl">
                 {{ item.title }}
               </h3>
             </div>
             <span
-              class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-bone-50/15 text-bone-50 ring-1 ring-inset ring-bone-50/20 backdrop-blur transition group-hover:bg-bone-50 group-hover:text-ink-800"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/95 text-ink-800 transition group-hover:bg-white"
             >
               <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
             </span>
