@@ -1,0 +1,24 @@
+# Build
+.nuxt
+.output
+.data
+dist
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+.vscode
+
+# Local env files
+.env
+.env.*
+!.env.example
