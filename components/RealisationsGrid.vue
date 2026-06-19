@@ -92,19 +92,22 @@ const spanClass = (s?: Realisation['span']) => {
             loading="lazy"
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-ink-900/80 via-ink-900/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+          <!-- Donkere ondergrond-gradient: sterk onderaan, fade naar top.
+               Geen opacity-reductie meer zodat de tekst altijd leesbaar is,
+               ook op lichte catalogus-foto's. -->
+          <div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-transparent transition-opacity duration-500 group-hover:opacity-100" />
 
           <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-bone-50">
-            <div>
+            <div class="drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               <p class="text-[10px] uppercase tracking-[0.25em] text-accent-200">
                 {{ item.category }}
               </p>
-              <h3 class="mt-1 font-display text-lg font-semibold leading-tight sm:text-xl">
+              <h3 class="mt-1 font-display text-lg font-semibold leading-tight text-shadow-sm sm:text-xl">
                 {{ item.title }}
               </h3>
             </div>
             <span
-              class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-bone-50/10 text-bone-50 backdrop-blur transition group-hover:bg-bone-50 group-hover:text-ink-800"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-bone-50/15 text-bone-50 ring-1 ring-inset ring-bone-50/20 backdrop-blur transition group-hover:bg-bone-50 group-hover:text-ink-800"
             >
               <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
             </span>
