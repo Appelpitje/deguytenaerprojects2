@@ -3,32 +3,21 @@ const { y } = useWindowScroll()
 const heroOpacity = computed(() => Math.max(0, 1 - y.value / 600))
 const heroTranslate = computed(() => Math.min(80, y.value * 0.15))
 
-// Pad via ref + composable → Vite probeert dit NIET statisch te resolven.
-// Eerst proberen we de lokale /images/hero-tegelwerk.jpg,
-// bij fout valt de browser terug op een Unsplash-catalogusbeeld.
-const LOCAL_HERO = '/images/hero-tegelwerk.jpg'
-
-const { src: fallbackSrc, alt: fallbackAlt } = useUnsplashImage.byId(
+// Hero komt rechtstreeks uit de Unsplash-catalogus (geen lokaal bestand
+// nodig). De ID is handmatig geverifieerd en levert een 200 terug.
+const { src: heroSrc, alt: heroAlt } = useUnsplashImage.byId(
   '1552321554-5fefe8c9ef14',
   1920,
   80,
   'Hoogwaardige badkamer betegeld door De Guytenaer Projects in Vlaanderen'
 )
-
-const heroSrc = ref(LOCAL_HERO)
-const heroAlt = 'Hoogwaardige badkamer betegeld door De Guytenaer Projects in Vlaanderen'
-const onHeroError = () => {
-  if (heroSrc.value !== fallbackSrc) {
-    heroSrc.value = fallbackSrc
-  }
-}
 </script>
 
 <template>
   <section
     class="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink-900 pt-32 text-bone-100"
   >
-    <!-- Achtergrondafbeelding (vervang met eigen hero-foto: public/images/hero-tegelwerk.jpg) -->
+    <!-- Achtergrondafbeelding: Unsplash CDN (catalogus-ID, 1920px breed) -->
     <div class="absolute inset-0 -z-10">
       <img
         :src="heroSrc"
@@ -36,7 +25,6 @@ const onHeroError = () => {
         class="h-full w-full object-cover animate-slow-zoom"
         loading="eager"
         fetchpriority="high"
-        @error="onHeroError"
       />
       <!-- Extra donkere top-tint zodat de navbar altijd leesbaar blijft -->
       <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink-900/80 to-transparent" />

@@ -92,11 +92,17 @@ valt het systeem automatisch terug op de catalogus.
 
 ### Foto's vervangen door eigen werk
 
-Voor de hero:
+Alle afbeeldingen komen uit de Unsplash-catalogus. Wil je ze
+vervangen door eigen werk, plaats dan je bestanden in `public/images/`
+(bv. `public/images/hero.jpg`) en pas de bijhorende `query` of
+`byId()`-call aan in de component:
 
-1. Plaats een eigen foto in `public/images/hero-tegelwerk.jpg`
-2. De Hero probeert dit lokale pad eerst; bij 404 valt hij terug op
-   de catalogus (`useUnsplashImage.byId('1552321554-5fefe8c9ef14', …)`)
+```ts
+// components/HeroSection.vue
+const { src, alt } = useUnsplashImage.byId('1552321554-5fefe8c9ef14', 1920, 80, 'alt')
+//                              ↓ vervang door je eigen filename in public/images/
+// const src = '/images/hero.jpg'
+```
 
 Voor realisaties / projecten / diensten: pas de `query`-velden aan
 in de componenten of voeg nieuwe entries toe aan `unsplashCatalog.ts`.
